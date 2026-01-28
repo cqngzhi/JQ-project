@@ -1,2 +1,11 @@
-Download AnyBurn
-https://anyburn.com/download.php
+WinRAR
+https://www.win-rar.com/download.html
+
+Windows 11 ISO
+https://www.microsoft.com/software-download/windows11
+
+AnyBurn
+https://anyburn.com/
+
+Windows System Image Manager (WSIM)
+https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install
