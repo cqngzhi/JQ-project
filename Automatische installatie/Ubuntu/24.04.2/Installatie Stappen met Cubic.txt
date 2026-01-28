@@ -1,0 +1,19 @@
+- Voorbereiding
+
+Installeer Cubic:
+
+sudo apt-add-repository universe
+sudo apt-add-repository ppa:cubic-wizard/release
+sudo apt update
+sudo apt install cubic
+
+ISO aanpassen
+
+- Met Cubic:
+
+pak je de originele ISO uit
+voeg je een nieuw seed-bestand toe
+pas je kernel- en bootinstellingen aan
+bouw je een nieuwe ISO
+
+De parameters zijn grotendeels vergelijkbaar met Ubuntu 20.04, met enkele aanpassingen voor 22.04.
