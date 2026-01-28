@@ -1,0 +1,36 @@
+Stap 1: Windows 11 ISO downloaden
+
+Als je al beschikt over een Windows 11 ISO, kan je deze stap overslaan.
+Ga naar de officiële Microsoft-website:
+https://www.microsoft.com/software-download/windows11
+Kies Download Windows 11 Disk Image (ISO)
+Selecteer Windows 11 (multi-edition ISO for x64 devices)
+Kies de gewenste taal (bij voorkeur Nederlands)
+Download de 64-bit versie
+
+Stap 2: ISO uitpakken
+
+Pak de gedownloade ISO uit met WinRAR of een gelijkaardige tool.
+
+Stap 3: Autounattend.xml aanmaken
+
+Met WSIM maak je een autounattend.xml-bestand aan dat het installatieproces volledig automatiseert.
+De installatie van WSIM wordt uitvoerig beschreven op:
+https://www.tenforums.com/tutorials/96683-create-media-automated-unattended-install-windows-10-a.html
+Open WSIM
+Kies New Answer File
+Koppel het bestand install.wim uit de uitgepakte ISO
+Configureer de gewenste installatie-instellingen
+Het XML-bestand bevat onder andere:
+taalinstellingen
+schijfpartitionering
+productkey
+gebruikersaccount
+firewall- en netwerkinstellingen
+automatische herstart
+
+Stap 4: Autounattend.xml toevoegen aan ISO
+
+Open de originele Windows 11 ISO
+Voeg het bestand autounattend.xml toe aan de hoofdmap
+Sla de ISO op onder een nieuwe naam
