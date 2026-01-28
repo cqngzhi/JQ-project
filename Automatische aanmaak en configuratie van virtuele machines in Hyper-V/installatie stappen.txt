@@ -16,7 +16,7 @@ Actieve VM’s worden veilig gestopt
 Bestaande VM’s met dezelfde naam worden verwijderd
 Oude VM-mappen (C:\vms) worden verwijderd
 Niet-standaard virtuele switches worden verwijderd
-👉 Dit voorkomt conflicten bij automatische installatie.
+Dit voorkomt conflicten bij automatische installatie.
 
 Stap 4: Virtuele switch aanmaken
 
