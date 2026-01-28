@@ -1,0 +1,53 @@
+Benodigdheden
+
+- Ubuntu Desktop 22.04 LTS (VM)
+- Ubuntu Desktop 20.04 LTS ISO
+- SSH-server
+- 7zip
+- genisoimage
+
+Stap 1: ISO voorbereiden
+
+- Installeer een SSH-server op de Ubuntu 22.04 VM zodat je deze op afstand kan beheren:
+
+sudo apt-get install openssh-server
+sudo systemctl start ssh
+
+
+- Controleer het IP-adres:
+
+ip addr
+
+Stap 2: ISO uitpakken
+
+- Download of plaats de Ubuntu 20.04 ISO in een gedeelde map en pak deze uit:
+
+7z x ubuntu-20.04.5-desktop-amd64.iso -oiso
+
+Stap 3: Automatisch installatiebestand maken
+
+Ubuntu ondersteunt automatische installaties via preseed- of seed-bestanden.
+In dit project heb ik gekozen voor een seed-bestand, omdat dit eenvoudiger te configureren is.
+
+Het standaardbestand ubuntu.seed wordt aangepast zodat:
+schijfpartitionering automatisch verloopt
+taal, toetsenbord en tijdzone vooraf ingesteld zijn
+gebruikers automatisch aangemaakt worden
+
+Stap 4: Bootconfiguratie aanpassen
+
+De bestanden txt.cfg en grub.cfg worden aangepast zodat Ubuntu automatisch het juiste seed-bestand gebruikt tijdens het opstarten.
+
+Stap 5: ISO opnieuw maken
+
+- Installeer genisoimage:
+
+sudo apt update
+sudo apt install genisoimage
+
+- Maak een nieuwe ISO:
+
+genisoimage -o auto-ubuntu.iso iso/
+
+
+
