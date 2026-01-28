@@ -1,0 +1,4 @@
+Name,RAM,HDsize,CPU,vTPM,SecureBoot
+OHVMPCT1,8GB,80GB,2,true,true
+OHVMPCT2,8GB,80GB,4,true,false
+OHVMPCT3,16GB,120GB,8,false,false
