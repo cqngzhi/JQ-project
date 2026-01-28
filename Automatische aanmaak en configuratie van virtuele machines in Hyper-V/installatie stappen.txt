@@ -1,0 +1,54 @@
+Stap 1: Voorbereiding
+
+Zorg dat PowerShell wordt uitgevoerd met beheerdersrechten
+Controleer of de laatste versie van PowerShellGet is geïnstalleerd
+Maak de map C:\vm aan voor scripts, ISO’s en CSV-bestanden
+
+Stap 2: Controleren en installeren van Hyper-V
+Het script controleert of Hyper-V is geïnstalleerd
+Indien niet aanwezig:
+wordt Hyper-V automatisch geïnstalleerd
+wordt een geplande taak aangemaakt om het script na herstart verder uit te voeren
+wordt de computer opnieuw opgestart
+
+Stap 3: Opschonen van bestaande omgeving
+Actieve VM’s worden veilig gestopt
+Bestaande VM’s met dezelfde naam worden verwijderd
+Oude VM-mappen (C:\vms) worden verwijderd
+Niet-standaard virtuele switches worden verwijderd
+👉 Dit voorkomt conflicten bij automatische installatie.
+
+Stap 4: Virtuele switch aanmaken
+
+Er wordt automatisch een externe virtuele switch aangemaakt
+De switch wordt gekoppeld aan de fysieke netwerkadapter
+De management-OS behoudt netwerktoegang
+
+Stap 5: VM’s aanmaken via CSV-bestand
+
+VM-gegevens worden ingelezen uit vmlist.csv
+Voor elke VM wordt automatisch:
+RAM en schijfgrootte ingesteld
+een VHDX aangemaakt
+generatie 2 geselecteerd
+2 CPU-cores toegewezen
+vTPM en Secure Boot geconfigureerd
+Windows 11 ISO gekoppeld
+
+Stap 6: ISO-verificatie
+
+De gebruiker kiest of de ISO:
+een originele Microsoft-ISO is
+of een aangepaste ISO
+Op basis hiervan wordt Secure Boot in- of uitgeschakeld
+
+Stap 7: Opruimen geplande taak
+
+De tijdelijke taak “Install Hyper-V” wordt automatisch verwijderd
+Dit voorkomt herhaald uitvoeren bij volgende logins
+
+Stap 8: VM’s starten en Windows 11 installeren
+
+VM’s worden automatisch gestart
+Via vmconnect wordt verbinding gemaakt
+Installatie van Windows 11 start zonder manuele configuratie
