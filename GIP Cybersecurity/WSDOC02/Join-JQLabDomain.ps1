@@ -13,7 +13,7 @@ $ADPassword      = "Pa55w.rd"
 # Netwerkinstellingen
 $StaticIP        = "10.38.100.22"
 $PrefixLength    = 24
-$Gateway         = "10.38.100.21"
+$Gateway         = "10.38.100.254"
 $PrimaryDNS      = "10.38.100.21" # IP van de Domain Controller
 $SecondaryDNS    = "127.0.0.1"
 
