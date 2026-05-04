@@ -8,14 +8,14 @@
 $NewComputerName = "SVR-PROD-01"
 $DomainName      = "JQLab.local"
 $ADAdmin         = "JQLAB\Administrator"
-$ADPassword      = "Pa55w.rd" 
+$ADPassword      = "Jiaqi1234" 
 
 # Netwerkinstellingen
-$StaticIP        = "192.168.1.11"
+$StaticIP        = "10.38.100.22"
 $PrefixLength    = 24
-$Gateway         = "192.168.1.1"
-$PrimaryDNS      = "192.168.1.10" # IP van de Domain Controller
-$SecondaryDNS    = "8.8.8.8"
+$Gateway         = "10.38.100.21"
+$PrimaryDNS      = "10.38.100.21" # IP van de Domain Controller
+$SecondaryDNS    = "127.0.0.1"
 
 # --- 2. Statisch IP en DNS instellen ---
 Write-Host "Bezig met configureren van netwerkinstellingen..." -ForegroundColor Cyan
