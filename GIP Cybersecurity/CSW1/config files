@@ -26,13 +26,13 @@ spanning-tree mode rapid-pvst
 spanning-tree vlan 10,20,99,100 root primary
 spanning-tree vlan 10,20,99,100 priority 4096
 
-interface range fastEthernet 1/0/1 - 2
+interface range GigabitEthernet 1/0/1 - 2
 spanning-tree vlan 10 port-priority 64
 exit
-interface fastEthernet 1/0/3
+interface GigabitEthernet 1/0/23
 spanning-tree vlan 10 port-priority 96
 exit
-interface fastEthernet 1/0/4
+interface GigabitEthernet 1/0/24
 spanning-tree vlan 10 port-priority 128
 exit
 
@@ -96,11 +96,11 @@ standby 30 ip 10.38.100.254
 standby 30 priority 200
 standby 30 preempt
 
-interface range fastEthernet 1/0/1 - 2
+interface range GigabitEthernet 1/0/1 - 2
 channel-group 1 mode active
 exit
 
-interface range FastEthernet 1/0/1 - 2
+interface range GigabitEthernet 1/0/1 - 2
 channel-group 1 mode active  
 interface port-channel 1
 switchport trunk encapsulation dot1q
@@ -109,7 +109,7 @@ switchport trunk allowed vlan 10,20,99,100
 switchport trunk native vlan 99
 no shutdown
 exit
-interface range FastEthernet 1/0/23 - 24
+interface range GigabitEthernet 1/0/23 - 24
 switchport trunk encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 10,20,99,100
@@ -117,11 +117,11 @@ switchport trunk native vlan 99
 no shutdown
 exit
 
-interface range FastEthernet 1/0/4 - 22, GigabitEthernet 1/0/1 - 2
+interface range GigabitEthernet 1/0/4 - 22
 shutdown
 exit
 
-interface fastEthernet 1/0/3
+interface GigabitEthernet 1/0/3
 no switchport
 ip address 10.38.255.13 255.255.255.252
 ip ospf priority 255
