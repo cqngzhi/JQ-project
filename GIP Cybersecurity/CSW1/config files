@@ -1,1 +1,148 @@
+enable
+configure terminal
+hostname CSW1
+no logging console
+no ip domain-lookup
+ip domain-name JQLab.local
+enable secret cisco
+service password-encryption
+ip routing
+banner motd #Authorized Access Only!#
 
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+username admin secret cisco
+line vty 0 15
+transport input ssh
+login local
+exit
+
+line console 0
+password cisco
+login
+exit
+
+spanning-tree mode rapid-pvst
+spanning-tree vlan 10,20,99,100 root primary
+spanning-tree vlan 10,20,99,100 priority 4096
+
+interface range fastEthernet 1/0/1 - 2
+spanning-tree vlan 10 port-priority 64
+exit
+interface fastEthernet 1/0/3
+spanning-tree vlan 10 port-priority 96
+exit
+interface fastEthernet 1/0/4
+spanning-tree vlan 10 port-priority 128
+exit
+
+vlan 10
+name Clients
+exit
+vlan 20
+name Wireless
+exit
+vlan 99
+name Management
+exit
+vlan 100
+name Servers
+exit
+
+interface vlan 1
+shutdown
+exit
+
+interface vlan 10
+ip address 10.38.1.253 255.255.255.0
+ip helper-address 10.38.100.21
+no shutdown
+exit
+
+interface vlan 20
+ip address 10.38.2.253 255.255.255.0
+ip helper-address 10.38.100.21
+no shutdown
+exit
+
+interface vlan 99
+ip address 10.38.99.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 100
+ip address 10.38.100.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 10
+standby 10 ip 10.38.1.254
+standby 10 priority 200
+standby 10 preempt
+
+interface vlan 20
+standby 20 ip 10.38.2.254
+standby 20 priority 200
+standby 20 preempt
+
+interface vlan 99
+standby 1 ip 10.38.99.254
+standby 1 priority 200
+standby 1 preempt
+exit
+
+interface vlan 100
+standby 30 ip 10.38.100.254
+standby 30 priority 200
+standby 30 preempt
+
+interface range fastEthernet 1/0/1 - 2
+channel-group 1 mode active
+exit
+
+interface range FastEthernet 1/0/1 - 2
+channel-group 1 mode active  
+interface port-channel 1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,99,100
+switchport trunk native vlan 99
+no shutdown
+exit
+interface range FastEthernet 1/0/23 - 24
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,99,100
+switchport trunk native vlan 99
+no shutdown
+exit
+
+interface range FastEthernet 1/0/4 - 22, GigabitEthernet 1/0/1 - 2
+shutdown
+exit
+
+interface fastEthernet 1/0/3
+no switchport
+ip address 10.38.255.13 255.255.255.252
+ip ospf priority 255
+ip ospf hello-interval 10 
+ip ospf dead-interval 40
+no shutdown
+exit
+
+interface loopback 0
+ip address 3.3.3.3 255.255.255.255
+ip ospf cost 10
+exit
+
+router ospf 1
+network 3.3.3.3 0.0.0.0 area 0
+network 10.38.1.0 0.0.0.255 area 0
+network 10.38.2.0 0.0.0.255 area 0
+network 10.38.99.0 0.0.0.255 area 0
+network 10.38.100.0 0.0.0.255 area 0
+network 10.38.255.12 0.0.0.3 area 0
+default-information originate always metric 10
+exit
+
+ip route 0.0.0.0 0.0.0.0 10.38.255.14
