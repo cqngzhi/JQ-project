@@ -8,7 +8,7 @@
 $NewComputerName = "SVR-PROD-01"
 $DomainName      = "JQLab.local"
 $ADAdmin         = "JQLAB\Administrator"
-$ADPassword      = "Jiaqi1234" 
+$ADPassword      = "Pa55w.rd" 
 
 # Netwerkinstellingen
 $StaticIP        = "10.38.100.22"
