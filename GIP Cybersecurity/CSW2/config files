@@ -109,6 +109,10 @@ interface range GigabitEthernet 1/0/1 - 2
 channel-group 1 mode active
 exit
 
+interface Port-channel1
+ip dhcp snooping trust
+exit
+
 interface range GigabitEthernet 1/0/1 - 2
 channel-group 1 mode active  
 interface port-channel 1
