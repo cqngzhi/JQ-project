@@ -8,6 +8,7 @@ ip domain-name JQLab.local
 banner motd #Authorized Access Only!#
 enable secret cisco
 service password-encryption
+ip dhcp snooping vlan 10,20
 
 line console 0
 password cisco
