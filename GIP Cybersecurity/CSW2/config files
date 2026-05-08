@@ -8,6 +8,7 @@ enable secret cisco
 service password-encryption
 ip routing
 banner motd #Authorized Access Only!#
+ip dhcp snooping vlan 10,20
 
 crypto key generate rsa general-keys modulus 1024
 ip ssh version 2
