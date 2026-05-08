@@ -80,22 +80,29 @@ interface vlan 10
 standby 10 ip 10.38.1.254
 standby 10 priority 150
 standby 10 preempt
+standby 10 authentication md5 key-string JQ-Lab_Pa55.wrd!
+exit
 
 interface vlan 20
 standby 20 ip 10.38.2.254
 standby 20 priority 150
 standby 20 preempt
+standby 20 authentication md5 key-string JQ-Lab_Pa55.wrd!
+exit
 
 interface vlan 99
 standby 1 ip 10.38.99.254
 standby 1 priority 150
 standby 1 preempt
+standby 1 authentication md5 key-string JQ-Lab_Pa55.wrd!
 exit
 
 interface vlan 100
 standby 30 ip 10.38.100.254
 standby 30 priority 150
 standby 30 preempt
+standby 30 authentication md5 key-string JQ-Lab_Pa55.wrd!
+exit
 
 interface range GigabitEthernet 1/0/1 - 2
 channel-group 1 mode active
