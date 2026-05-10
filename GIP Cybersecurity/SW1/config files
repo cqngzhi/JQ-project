@@ -30,7 +30,7 @@ ip access-list standard ACL_MGMT
 permit 10.38.100.23
 permit 10.38.99.0 0.0.0.255
 deny any log
-exi
+exit
 
 line vty 0 15
 access-class ACL_MGMT in
