@@ -22,9 +22,10 @@ ip ssh version 2
 ip ssh time-out 60
 ip ssh authentication-retries 3
 ip access-list standard ACL_MGMT
+permit 10.38.100.23
 permit 10.38.99.0 0.0.0.255
 deny any log
-exit
+exi
 
 line vty 0 15
 access-class ACL_MGMT in
