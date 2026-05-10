@@ -127,6 +127,7 @@ exit
 
 interface range GigabitEthernet 1/0/1 - 2
 channel-group 1 mode active  
+exit
 interface port-channel 1
 ip dhcp snooping trust
 switchport trunk encapsulation dot1q
