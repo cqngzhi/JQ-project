@@ -3,6 +3,12 @@ configure terminal
 
 hostname ASW2
 no logging console
+logging buffered 16384 informational
+logging trap warnings
+service timestamps log datetime msec localtime
+service timestamps debug datetime msec localtime
+logging host 10.38.100.23
+logging source-interface vlan 99
 no ip domain-lookup
 ip domain-name JQLab.local
 banner motd #Authorized Access Only!#
