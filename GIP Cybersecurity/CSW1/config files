@@ -188,4 +188,16 @@ passive-interface default
 no passive-interface GigabitEthernet 1/0/3
 exit
 
+no snmp-server community public
+no snmp-server community private
+snmp-server group SNMP_GROUP v3 priv
+snmp-server group SNMP_GROUP v3 priv access ACL_MGMT
+snmp-server user snmpadmin SNMP_GROUP v3 auth sha JQ-Lab_SNMPauth#1 priv aes 128 JQ-Lab_SNMPpriv#1
+snmp-server location JQLab-Core-Switch-1
+snmp-server contact admin@JQLab.local
+snmp-server host 10.38.100.23 version 3 priv snmpadmin
+snmp-server enable traps snmp authentication
+snmp-server enable traps hsrp
+snmp-server enable traps spanning-tree
+snmp-server enable traps ospf
 
