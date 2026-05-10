@@ -88,7 +88,7 @@ switchport access vlan 99
 spanning-tree portfast           
 spanning-tree bpduguard enable    
 no ip dhcp snooping trust         
-no shutdow
+no shutdown
 exit
 
 interface range fastEthernet 0/9-24
