@@ -43,6 +43,9 @@ exit
 vlan 100
 name Servers
 exit
+vlan 999
+name UNUSED_BLACKHOLE
+exit
 
 interface range fastEthernet 0/1-2
 spanning-tree portfast
@@ -107,6 +110,8 @@ no shutdown
 exit
 
 interface range fastEthernet 0/9-24
+switchport mode access
+switchport access vlan 999
 shutdown
 exit
 
