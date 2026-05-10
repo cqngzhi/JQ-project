@@ -21,7 +21,9 @@ deny any log
 exit
 
 line vty 0 15
+access-class ACL_MGMT in
 transport input ssh
+exec-timeout 10 0
 login local
 exit
 
