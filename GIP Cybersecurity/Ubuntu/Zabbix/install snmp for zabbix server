@@ -1,0 +1,8 @@
+sudo apt update
+sudo apt install snmpd snmp snmp-mibs-downloader -y
+sudo download-mibs
+sudo nano /etc/snmp/snmp.conf
+# mibs :
+
+sudo ufw allow 161/udp
+sudo systemctl restart zabbix-server
