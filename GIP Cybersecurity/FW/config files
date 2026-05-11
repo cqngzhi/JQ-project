@@ -98,9 +98,9 @@ set queries enable
 set events enable
 set security-level auth-priv
 set auth-proto sha
-set auth-pwd JQ-Lab_SNMPauth#1
+set auth-pwd "JQ-Lab_SNMPauth#1"
 set priv-proto aes128
-set priv-pwd JQ-Lab_SNMPpriv#1
+set priv-pwd "JQ-Lab_SNMPpriv#1"
 set source-ip 10.38.0.0 255.255.0.0
 next
 end
@@ -112,16 +112,12 @@ set description "JQLab-Core-40F"
 set location "JQLab-Belgium-Lab"
 end
 
-config system snmp community
+config system snmp target-host
 edit 1
-set name "unused_but_required"
-config hosts
-edit 1
-set ip 10.38.100.23 255.255.255.255
+set ip 10.38.100.23
+set status enable
+set snmp-version v3
+set user-name "snmpadmin"
 set source-ip 10.38.255.14
-next
-end
-set trap-v3-status enable
-set trap-v3-user "snmpadmin"
 next
 end
