@@ -4,6 +4,24 @@ set secondary 195.238.2.21
 set source-ip 192.168.0.45
 end
 
+config system interface
+edit "Loopback0"
+set vdom "root"
+set ip 10.38.99.249 255.255.255.255
+set allowaccess ping https ssh snmp
+set type loopback
+next
+end
+
+config router ospf
+config network
+edit 10
+set prefix 10.38.99.249 255.255.255.255
+set area 0.0.0.0
+next
+end
+end
+
 config router ospf
 set router-id 1.1.1.1  
 config network
