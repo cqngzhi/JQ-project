@@ -155,9 +155,6 @@ snmp-server location JQLab-Access-Switch-1
 snmp-server contact admin@JQLab.local
 snmp-server host 10.38.100.23 version 3 priv snmpadmin
 snmp-server enable traps snmp authentication
-snmp-server enable traps hsrp
-snmp-server enable traps spanning-tree
-snmp-server enable traps ospf
 
 aaa new-model
 
