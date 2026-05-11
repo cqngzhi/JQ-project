@@ -10,6 +10,9 @@ service timestamps debug datetime msec localtime
 logging host 10.38.100.23
 logging source-interface vlan 99
 no ip domain-lookup
+no service pad
+no ip http server
+no ip http secure-server
 ip domain-name JQLab.local
 banner motd #Authorized Access Only!#
 enable secret cisco
