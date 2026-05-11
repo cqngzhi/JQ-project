@@ -72,7 +72,8 @@ switchport access vlan 10
 switchport port-security maximum 5
 switchport port-security violation restrict
 switchport port-security mac-address sticky
-no ip dhcp snooping trust   
+no ip dhcp snooping trust 
+ip dhcp snooping limit rate 15
 no shutdown
 exit
 
@@ -85,6 +86,7 @@ switchport port-security maximum 10
 switchport port-security violation restrict
 switchport port-security mac-address sticky
 no ip dhcp snooping trust   
+ip dhcp snooping limit rate 15
 no shutdown
 exit
 
