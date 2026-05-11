@@ -152,19 +152,27 @@ snmp-server enable traps hsrp
 snmp-server enable traps spanning-tree
 snmp-server enable traps ospf
 
+aaa new-model
+
 radius server Windows_NPS
 address ipv4 10.38.100.21 auth-port 1812 acct-port 1813
-key JQ-Lab_Radius_2026     
+key JQ-Lab_Radius_2026
+timeout 3
+retransmit 2
 exit
 
-aaa new-model
-aaa authentication login VTY_AUTH group radius local
-aaa authorization exec VTY_AUTH group radius local 
-
+aaa server radius deadtime 10
 ip radius source-interface vlan 99
+aaa local authentication attempts max-fail 3
+
+aaa authentication login VTY_AUTH group radius local
+aaa authorization exec VTY_AUTH group radius local
+aaa accounting exec VTY_ACCT start-stop group radius
+aaa accounting commands 15 VTY_ACCT start-stop group radius
 
 line vty 0 15
 login authentication VTY_AUTH
 authorization exec VTY_AUTH
+accounting exec VTY_ACCT
 transport input ssh
 exit
