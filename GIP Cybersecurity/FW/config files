@@ -48,7 +48,7 @@ set area 0.0.0.0
 next
 end
 config ospf-interface
-edit "ospf_to_cisco"
+edit "to_Cisco_lan2"
 set interface "lan2"
 set hello-interval 10
 set dead-interval 40
@@ -65,6 +65,7 @@ end
 
 config system interface
 edit "lan3"
+set vln-protocol-8021q disable
 set allowaccess ping
 next
 end
