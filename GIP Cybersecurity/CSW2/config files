@@ -220,7 +220,7 @@ timeout 3
 retransmit 2
 exit
 
-aaa server radius deadtime 10
+radius-server deadtime 10
 ip radius source-interface vlan 99
 aaa local authentication attempts max-fail 3
 
