@@ -1,6 +1,6 @@
 # DHCP Scope aanmaken
 Add-DhcpServerv4Scope `
--Name "Client" `
+-Name "Clients" `
 -StartRange 10.38.1.1 `
 -EndRange 10.38.1.249 `
 -SubnetMask 255.255.255.0 `
