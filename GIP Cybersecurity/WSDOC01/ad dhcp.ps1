@@ -21,7 +21,7 @@ Add-DhcpServerv4ExclusionRange `
 
 # DHCP Scope aanmaken
 Add-DhcpServerv4Scope `
--Name "LAN_SCOPE" `
+-Name "Wireless" `
 -StartRange 10.38.1.10 `
 -EndRange 10.38.1.200 `
 -SubnetMask 255.255.255.0 `
