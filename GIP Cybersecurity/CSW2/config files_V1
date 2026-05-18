@@ -45,16 +45,16 @@ login
 exit
 
 spanning-tree mode rapid-pvst
-spanning-tree vlan 10,20,99,100 priority 8192
+spanning-tree vlan 10,20,99,100 priority 4096
 
 interface range GigabitEthernet 1/0/1 - 2
 spanning-tree vlan 10,20,99,100 port-priority 48
 exit
 interface GigabitEthernet 1/0/23
-spanning-tree vlan 10 port-priority 96
+spanning-tree vlan 10,20,99,100 port-priority 96
 exit
 interface GigabitEthernet 1/0/24
-spanning-tree vlan 10 port-priority 128
+spanning-tree vlan 10,20,99,100 port-priority 128
 exit
 
 vlan 10
