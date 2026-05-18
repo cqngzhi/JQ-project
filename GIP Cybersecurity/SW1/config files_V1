@@ -130,6 +130,8 @@ no shutdown
 exit
 
 interface fastEthernet 0/9
+ip dhcp snooping trust
+ip arp inspection trust
 spanning-tree bpduguard disable 
 spanning-tree portfast disable 
 switchport mode trunk
