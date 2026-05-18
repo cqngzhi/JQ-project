@@ -19,6 +19,7 @@ enable secret cisco
 service password-encryption
 ip dhcp snooping vlan 10,20,99,100
 ip arp inspection vlan 10,20,99,100
+lldp run
 
 line console 0
 password cisco
@@ -104,17 +105,17 @@ no shutdown
 exit
 
 interface range gigabitethernet 0/1-2
-ip dhcp snooping trust
-ip arp inspection trust
 spanning-tree bpduguard disable 
 spanning-tree portfast disable 
 switchport mode trunk
 switchport trunk allowed vlan 10,20,99,100
-switchport trunk native vlan 99
+no switchport trunk native vlan 99
 switchport port-security maximum 5
 switchport port-security violation restrict
 switchport port-security mac-address sticky
 switchport nonegotiate
+lldp transmit
+lldp receive
 no shutdown
 exit
 
@@ -131,7 +132,22 @@ no ip dhcp snooping trust
 no shutdown
 exit
 
-interface range fastEthernet 0/9-24
+interface fastEthernet 0/9
+spanning-tree bpduguard disable 
+spanning-tree portfast disable 
+switchport mode trunk
+switchport trunk allowed vlan 10,20,99,100
+no switchport trunk native vlan 99
+switchport port-security maximum 5
+switchport port-security violation restrict
+switchport port-security mac-address sticky
+switchport nonegotiate
+lldp transmit
+lldp receive
+no shutdown
+exit
+
+interface range fastEthernet 0/10-24
 switchport mode access
 switchport access vlan 999
 shutdown
