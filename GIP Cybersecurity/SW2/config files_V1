@@ -103,8 +103,8 @@ no shutdown
 exit
 
 interface range gigabitethernet 0/1-2
-no ip dhcp snooping trust
-no ip arp inspection trust
+ip dhcp snooping trust
+ip arp inspection trust
 spanning-tree bpduguard disable 
 spanning-tree portfast disable 
 switchport mode trunk
