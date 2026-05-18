@@ -74,7 +74,6 @@ shutdown
 exit
 
 interface vlan 10
-ip address 10.38.1.253 255.255.255.0
 ip helper-address 10.38.99.254
 no ip proxy-arp
 no ip redirects
@@ -83,7 +82,6 @@ no shutdown
 exit
 
 interface vlan 20
-ip address 10.38.2.253 255.255.255.0
 ip helper-address 10.38.99.254
 no ip proxy-arp
 no ip redirects
@@ -101,7 +99,6 @@ no shutdown
 exit
 
 interface vlan 100
-ip address 10.38.100.253 255.255.255.0
 ip helper-address 10.38.99.254
 no ip proxy-arp
 no ip redirects
