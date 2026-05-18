@@ -111,6 +111,8 @@ no shutdown
 exit
 
 interface range GigabitEthernet 1/0/1 - 2
+ip dhcp snooping trust
+ip arp inspection trust
 lldp transmit
 lldp receive
 channel-group 1 mode active  
