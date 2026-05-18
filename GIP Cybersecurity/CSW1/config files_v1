@@ -112,6 +112,8 @@ exit
 
 interface range GigabitEthernet 1/0/1 - 2
 channel-group 1 mode active  
+lldp transmit
+lldp receive
 exit
 interface port-channel 1
 switchport trunk encapsulation dot1q
@@ -121,8 +123,6 @@ no switchport trunk native vlan 99
 switchport nonegotiate
 no cdp enable
 no shutdown
-lldp transmit
-lldp receive
 exit
 interface range GigabitEthernet 1/0/23 - 24
 switchport trunk encapsulation dot1q
