@@ -69,7 +69,6 @@ exit
 vlan 100
 name Servers
 exit
-
 vlan 999
 name UNUSED_BLACKHOLE
 exit
