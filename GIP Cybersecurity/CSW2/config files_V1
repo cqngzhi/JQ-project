@@ -141,6 +141,7 @@ no cdp enable
 no shutdown
 exit
 interface GigabitEthernet 1/0/3
+spanning-tree bpdufilter enable
 ip dhcp snooping trust
 ip arp inspection trust
 switchport mode trunk
