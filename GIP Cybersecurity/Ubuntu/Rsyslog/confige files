@@ -1,0 +1,14 @@
+sudo mkdir -p /var/log/remote
+sudo chown -R syslog:adm /var/log/remote
+sudo chmod -R 755 /var/log/remote
+
+sudo nano /etc/rsyslog.conf
+
+module(load="imudp")
+input(type="imudp" port="514")
+
+$template GenericRemoteLogs,"/var/log/remote/%fromhost-ip%/%programname%.log"
+:fromhost-ip, !isequal, "127.0.0.1" ?GenericRemoteLogs
+& stop
+
+sudo systemctl restart rsyslog
