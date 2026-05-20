@@ -8,11 +8,12 @@ New-ADGroup -Name "IT" -GroupScope Global -Path "OU=IT,DC=JQLab,DC=local"
 New-ADGroup -Name "verkoper" -GroupScope Global -Path "OU=verkoper,DC=JQLab,DC=local"
 New-ADGroup -Name "boekhouder" -GroupScope Global -Path "OU=boekhouder,DC=JQLab,DC=local"
 New-ADGroup -Name "WiFi_Radut_Access" -GroupScope Global -Path "DC=JQLab,DC=local"
+New-ADGroup -Name "NetworkAdmin" -GroupScope Global -Path "OU=IT,DC=JQLab,DC=local"
 
 # --- 3. Batchgewijs aanmaken van gebruikers (Wachtwoord verloopt nooit) ---
 
 # IT Afdeling - Verantwoordelijke: James Smith (JSmith)
-"James Smith","Emily Davis","Michael Brown","Sarah Wilson" | ForEach-Object {
+"James Smith","Emily Davis","Michael Brown","Sarah Wilson","FGadmin","CSCadmin" | ForEach-Object {
     $sam = $_.Split(' ')[0][0] + $_.Split(' ')[1]
     New-ADUser -Name $_ -SamAccountName $sam -Path "OU=IT,DC=JQLab,DC=local" -Enabled $true -AccountPassword (ConvertTo-SecureString "Pa55w.rd" -AsPlainText -Force) -PasswordNeverExpires $true -ChangePasswordAtLogon $false
     Add-ADGroupMember -Identity "IT" -Members $sam
