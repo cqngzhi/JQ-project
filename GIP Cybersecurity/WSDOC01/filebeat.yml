@@ -1,0 +1,17 @@
+# ======================== Custom Syslog Output Config ========================
+
+filebeat.inputs:
+- type: winlog
+  event_logs:
+    - name: Application
+    - name: System
+    - name: Security
+
+output.elasticsearch:
+  enabled: false
+
+
+output.logstash:
+  enabled: true
+  hosts: ["10.38.100.23:514"]
+  transport: udp
