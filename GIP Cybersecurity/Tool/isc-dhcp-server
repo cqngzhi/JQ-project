@@ -6,9 +6,9 @@ INTERFACESv4="ens0"
 
 sudo nano /etc/dhcp/dhcpd.conf
 subnet 10.38.100.0 netmask 255.255.255.0 {
-  range 10.38.100.100 10.38.100.200;      # 自动分配的 IP 范围
-  option routers 10.38.100.1;             # 默认网关
-  option domain-name-servers 8.8.8.8;     # DNS 服务器
+  range 10.38.100.100 10.38.100.200;      
+  option routers 10.38.100.1;             
+  option domain-name-servers 8.8.8.8;     
   default-lease-time 600;
   max-lease-time 7200;
 }
