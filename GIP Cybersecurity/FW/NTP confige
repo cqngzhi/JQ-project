@@ -1,0 +1,4 @@
+config system ntp
+    set ntpsync enable
+    set server-mode enable
+end
