@@ -71,6 +71,7 @@ spanning-tree portfast
 spanning-tree bpduguard enable
 switchport mode access
 switchport access vlan 10
+switchport port-security
 switchport port-security maximum 5
 switchport port-security violation restrict
 switchport port-security mac-address sticky
@@ -84,6 +85,7 @@ spanning-tree portfast
 spanning-tree bpduguard enable
 switchport mode access
 switchport access vlan 20
+switchport port-security
 switchport port-security maximum 10
 switchport port-security violation restrict
 switchport port-security mac-address sticky
@@ -96,6 +98,7 @@ interface range fastEthernet 0/5-6
 spanning-tree portfast
 spanning-tree bpduguard enable
 switchport mode access
+switchport port-security
 switchport access vlan 100
 switchport port-security maximum 10
 switchport port-security violation restrict
@@ -121,6 +124,7 @@ interface range fastEthernet 0/7-8
 description Management_PC_Link
 switchport mode access
 switchport access vlan 99
+switchport port-security
 switchport port-security maximum 10
 switchport port-security violation restrict
 no switchport port-security mac-address sticky
