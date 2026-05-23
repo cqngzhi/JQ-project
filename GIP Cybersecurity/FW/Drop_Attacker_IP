@@ -1,0 +1,12 @@
+config firewall local-in-policy
+
+edit 1
+set intf "wan"
+set srcaddr "Kali"
+set dstaddr "all"
+set service "ALL"
+set schedule "always"
+set action deny
+
+next
+end
