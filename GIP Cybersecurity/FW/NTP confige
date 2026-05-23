@@ -7,3 +7,7 @@ config system ntp
         next
     end
 end
+
+config system global
+set timezone "Europe/Brussels"
+end
