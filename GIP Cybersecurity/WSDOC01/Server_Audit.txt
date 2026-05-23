@@ -1,0 +1,576 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260524013332
+Username: JQLAB\administrator
+RunAs User: JQLAB\administrator
+Configuration Name: 
+Machine: DC01 (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 9180
+PSVersion: 5.1.26100.32860
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.32860
+BuildVersion: 10.0.26100.32860
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Audit\Server_Audit.txt
+PS C:\Users\Administrator> Import-Module ActiveDirectory
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> Write-Host " DOMAIN INFORMATION"
+ DOMAIN INFORMATION
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> Get-ADDomain
+
+
+AllowedDNSSuffixes                 : {}
+ChildDomains                       : {}
+ComputersContainer                 : CN=Computers,DC=JQLab,DC=local
+DeletedObjectsContainer            : CN=Deleted Objects,DC=JQLab,DC=local
+DistinguishedName                  : DC=JQLab,DC=local
+DNSRoot                            : JQLab.local
+DomainControllersContainer         : OU=Domain Controllers,DC=JQLab,DC=local
+DomainMode                         : Windows2025Domain
+DomainSID                          : S-1-5-21-585839346-372807186-441994756
+ForeignSecurityPrincipalsContainer : CN=ForeignSecurityPrincipals,DC=JQLab,DC=local
+Forest                             : JQLab.local
+InfrastructureMaster               : DC01.JQLab.local
+LastLogonReplicationInterval       :
+LinkedGroupPolicyObjects           : {CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=JQLab,DC=local
+                                     }
+LostAndFoundContainer              : CN=LostAndFound,DC=JQLab,DC=local
+ManagedBy                          :
+Name                               : JQLab
+NetBIOSName                        : JQLAB
+ObjectClass                        : domainDNS
+ObjectGUID                         : d1a031c1-c31d-4d5b-8b10-b8c1e1255287
+ParentDomain                       :
+PDCEmulator                        : DC01.JQLab.local
+PublicKeyRequiredPasswordRolling   : True
+QuotasContainer                    : CN=NTDS Quotas,DC=JQLab,DC=local
+ReadOnlyReplicaDirectoryServers    : {}
+ReplicaDirectoryServers            : {DC01.JQLab.local}
+RIDMaster                          : DC01.JQLab.local
+SubordinateReferences              : {DC=ForestDnsZones,DC=JQLab,DC=local, DC=DomainDnsZones,DC=JQLab,DC=local,
+                                     CN=Configuration,DC=JQLab,DC=local}
+SystemsContainer                   : CN=System,DC=JQLab,DC=local
+UsersContainer                     : CN=Users,DC=JQLab,DC=local
+
+
+
+PS C:\Users\Administrator> Write-Host "`n================================="
+
+=================================
+PS C:\Users\Administrator> Write-Host " DOMAIN CONTROLLERS"
+ DOMAIN CONTROLLERS
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> Get-ADDomainController -Filter *
+
+
+ComputerObjectDN           : CN=DC01,OU=Domain Controllers,DC=JQLab,DC=local
+DefaultPartition           : DC=JQLab,DC=local
+Domain                     : JQLab.local
+Enabled                    : True
+Forest                     : JQLab.local
+HostName                   : DC01.JQLab.local
+InvocationId               : 9af1ef94-99c9-447d-8339-42b1ff9ad3b9
+IPv4Address                : 10.38.100.21
+IPv6Address                :
+IsGlobalCatalog            : True
+IsReadOnly                 : False
+LdapPort                   : 389
+Name                       : DC01
+NTDSSettingsObjectDN       : CN=NTDS Settings,CN=DC01,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,D
+                             C=JQLab,DC=local
+OperatingSystem            : Windows Server 2025 Standard Evaluation
+OperatingSystemHotfix      :
+OperatingSystemServicePack :
+OperatingSystemVersion     : 10.0 (26100)
+OperationMasterRoles       : {SchemaMaster, DomainNamingMaster, PDCEmulator, RIDMaster...}
+Partitions                 : {DC=ForestDnsZones,DC=JQLab,DC=local, DC=DomainDnsZones,DC=JQLab,DC=local,
+                             CN=Schema,CN=Configuration,DC=JQLab,DC=local, CN=Configuration,DC=JQLab,DC=local...}
+ServerObjectDN             : CN=DC01,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=JQLab,DC=local
+ServerObjectGuid           : 7c1dd6fc-be48-492d-ba8f-f80f34c5405c
+Site                       : Default-First-Site-Name
+SslPort                    : 636
+
+
+
+PS C:\Users\Administrator> Write-Host "`n================================="
+
+=================================
+PS C:\Users\Administrator> Write-Host " ACTIVE DIRECTORY USERS"
+ ACTIVE DIRECTORY USERS
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> Get-ADUser -Filter * -Properties Enabled,LastLogonDate |
+Select-Object Name,SamAccountName,Enabled,LastLogonDate
+
+Name          SamAccountName Enabled LastLogonDate
+----          -------------- ------- -------------
+Administrator Administrator     True 5/20/2026 3:15:55 AM
+Guest         Guest            False
+krbtgt        krbtgt           False
+James Smith   JSmith            True
+Emily Davis   EDavis            True
+Michael Brown MBrown            True
+Sarah Wilson  SWilson           True
+Robert Jones  RJones            True
+Linda Taylor  LTaylor           True
+William Clark WClark            True
+Jessica White JWhite            True
+David Miller  DMiller           True
+Karen Moore   KMoore            True
+Thomas Hall   THall             True
+Nancy Young   NYoung            True
+FGadmin       FGadmin           True 5/20/2026 1:12:10 PM
+CSCadmin      CSCadmin          True 5/22/2026 11:35:51 PM
+
+
+PS C:\Users\Administrator> Write-Host "`n================================="
+
+=================================
+PS C:\Users\Administrator> Write-Host " ACTIVE DIRECTORY GROUPS"
+ ACTIVE DIRECTORY GROUPS
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> Get-ADGroup -Filter * |
+Select-Object Name,GroupScope,GroupCategory
+
+Name                                     GroupScope GroupCategory
+----                                     ---------- -------------
+Administrators                          DomainLocal      Security
+Users                                   DomainLocal      Security
+Guests                                  DomainLocal      Security
+Print Operators                         DomainLocal      Security
+Backup Operators                        DomainLocal      Security
+Replicator                              DomainLocal      Security
+Remote Desktop Users                    DomainLocal      Security
+Network Configuration Operators         DomainLocal      Security
+Performance Monitor Users               DomainLocal      Security
+Performance Log Users                   DomainLocal      Security
+Distributed COM Users                   DomainLocal      Security
+IIS_IUSRS                               DomainLocal      Security
+Cryptographic Operators                 DomainLocal      Security
+Event Log Readers                       DomainLocal      Security
+Certificate Service DCOM Access         DomainLocal      Security
+RDS Remote Access Servers               DomainLocal      Security
+RDS Endpoint Servers                    DomainLocal      Security
+RDS Management Servers                  DomainLocal      Security
+Hyper-V Administrators                  DomainLocal      Security
+Access Control Assistance Operators     DomainLocal      Security
+Remote Management Users                 DomainLocal      Security
+Storage Replica Administrators          DomainLocal      Security
+OpenSSH Users                           DomainLocal      Security
+Domain Computers                             Global      Security
+Domain Controllers                           Global      Security
+Schema Admins                             Universal      Security
+Enterprise Admins                         Universal      Security
+Cert Publishers                         DomainLocal      Security
+Domain Admins                                Global      Security
+Domain Users                                 Global      Security
+Domain Guests                                Global      Security
+Group Policy Creator Owners                  Global      Security
+RAS and IAS Servers                     DomainLocal      Security
+Server Operators                        DomainLocal      Security
+Account Operators                       DomainLocal      Security
+Pre-Windows 2000 Compatible Access      DomainLocal      Security
+Incoming Forest Trust Builders          DomainLocal      Security
+Windows Authorization Access Group      DomainLocal      Security
+Terminal Server License Servers         DomainLocal      Security
+Allowed RODC Password Replication Group DomainLocal      Security
+Denied RODC Password Replication Group  DomainLocal      Security
+Read-only Domain Controllers                 Global      Security
+Enterprise Read-only Domain Controllers   Universal      Security
+Cloneable Domain Controllers                 Global      Security
+Protected Users                              Global      Security
+Key Admins                                   Global      Security
+Enterprise Key Admins                     Universal      Security
+Forest Trust Accounts                        Global      Security
+External Trust Accounts                      Global      Security
+DnsAdmins                               DomainLocal      Security
+DnsUpdateProxy                               Global      Security
+IT                                           Global      Security
+verkoper                                     Global      Security
+boekhouder                                   Global      Security
+WiFi_Radut_Access                            Global      Security
+NetworkAdmin                                 Global      Security
+
+
+PS C:\Users\Administrator> Write-Host "`n================================="
+
+=================================
+PS C:\Users\Administrator> Write-Host " GROUP MEMBERS"
+ GROUP MEMBERS
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> $Groups = Get-ADGroup -Filter *
+PS C:\Users\Administrator> foreach ($Group in $Groups) {
+
+    Write-Host "`n----- GROUP: $($Group.Name) -----"
+
+    Get-ADGroupMember $Group |
+    Select-Object Name,ObjectClass
+}
+
+----- GROUP: Administrators -----
+
+
+----- GROUP: Users -----
+
+----- GROUP: Guests -----
+
+----- GROUP: Print Operators -----
+
+----- GROUP: Backup Operators -----
+
+----- GROUP: Replicator -----
+
+----- GROUP: Remote Desktop Users -----
+
+----- GROUP: Network Configuration Operators -----
+
+----- GROUP: Performance Monitor Users -----
+
+----- GROUP: Performance Log Users -----
+
+----- GROUP: Distributed COM Users -----
+
+----- GROUP: IIS_IUSRS -----
+Name                ObjectClass
+----                -----------
+Domain Admins       group
+Enterprise Admins   group
+Administrator       user
+Domain Users        group
+Authenticated Users
+INTERACTIVE
+Domain Guests       group
+Guest               user
+IUSR
+
+----- GROUP: Cryptographic Operators -----
+
+----- GROUP: Event Log Readers -----
+
+----- GROUP: Certificate Service DCOM Access -----
+
+----- GROUP: RDS Remote Access Servers -----
+
+----- GROUP: RDS Endpoint Servers -----
+
+----- GROUP: RDS Management Servers -----
+
+----- GROUP: Hyper-V Administrators -----
+
+----- GROUP: Access Control Assistance Operators -----
+
+----- GROUP: Remote Management Users -----
+
+----- GROUP: Storage Replica Administrators -----
+
+----- GROUP: OpenSSH Users -----
+
+----- GROUP: Domain Computers -----
+
+----- GROUP: Domain Controllers -----
+DC01                computer
+
+----- GROUP: Schema Admins -----
+Administrator       user
+
+----- GROUP: Enterprise Admins -----
+Administrator       user
+
+----- GROUP: Cert Publishers -----
+
+----- GROUP: Domain Admins -----
+Administrator       user
+James Smith         user
+
+----- GROUP: Domain Users -----
+Administrator       user
+krbtgt              user
+James Smith         user
+Emily Davis         user
+Michael Brown       user
+Sarah Wilson        user
+Robert Jones        user
+Linda Taylor        user
+William Clark       user
+Jessica White       user
+David Miller        user
+Karen Moore         user
+Thomas Hall         user
+Nancy Young         user
+FGadmin             user
+CSCadmin            user
+
+----- GROUP: Domain Guests -----
+Guest               user
+
+----- GROUP: Group Policy Creator Owners -----
+Administrator       user
+
+----- GROUP: RAS and IAS Servers -----
+DC01                computer
+
+----- GROUP: Server Operators -----
+
+----- GROUP: Account Operators -----
+
+----- GROUP: Pre-Windows 2000 Compatible Access -----
+Authenticated Users
+
+----- GROUP: Incoming Forest Trust Builders -----
+
+----- GROUP: Windows Authorization Access Group -----
+ENTERPRISE DOMAI...
+
+----- GROUP: Terminal Server License Servers -----
+
+----- GROUP: Allowed RODC Password Replication Group -----
+
+----- GROUP: Denied RODC Password Replication Group -----
+Read-only Domain... group
+Group Policy Cre... group
+Domain Admins       group
+Cert Publishers     group
+Enterprise Admins   group
+Schema Admins       group
+Domain Controllers  group
+krbtgt              user
+
+----- GROUP: Read-only Domain Controllers -----
+
+----- GROUP: Enterprise Read-only Domain Controllers -----
+
+----- GROUP: Cloneable Domain Controllers -----
+
+----- GROUP: Protected Users -----
+
+----- GROUP: Key Admins -----
+
+----- GROUP: Enterprise Key Admins -----
+
+----- GROUP: Forest Trust Accounts -----
+
+----- GROUP: External Trust Accounts -----
+
+----- GROUP: DnsAdmins -----
+
+----- GROUP: DnsUpdateProxy -----
+
+----- GROUP: IT -----
+James Smith         user
+Emily Davis         user
+Michael Brown       user
+Sarah Wilson        user
+
+----- GROUP: verkoper -----
+Robert Jones        user
+Linda Taylor        user
+William Clark       user
+Jessica White       user
+
+----- GROUP: boekhouder -----
+David Miller        user
+Karen Moore         user
+Thomas Hall         user
+Nancy Young         user
+
+----- GROUP: WiFi_Radut_Access -----
+James Smith         user
+Emily Davis         user
+Michael Brown       user
+Sarah Wilson        user
+Robert Jones        user
+Linda Taylor        user
+William Clark       user
+Jessica White       user
+David Miller        user
+Karen Moore         user
+Thomas Hall         user
+Nancy Young         user
+
+----- GROUP: NetworkAdmin -----
+FGadmin             user
+CSCadmin            user
+
+
+PS C:\Users\Administrator> Write-Host "`n================================="
+
+=================================
+PS C:\Users\Administrator> Write-Host " ORGANIZATIONAL UNITS (OU)"
+ ORGANIZATIONAL UNITS (OU)
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> Get-ADOrganizationalUnit -Filter * |
+Select-Object Name,DistinguishedName
+
+Name               DistinguishedName
+----               -----------------
+Domain Controllers OU=Domain Controllers,DC=JQLab,DC=local
+IT                 OU=IT,DC=JQLab,DC=local
+verkoper           OU=verkoper,DC=JQLab,DC=local
+boekhouder         OU=boekhouder,DC=JQLab,DC=local
+
+
+PS C:\Users\Administrator> Write-Host "`n================================="
+
+=================================
+PS C:\Users\Administrator> Write-Host " GROUP POLICY OBJECTS (GPO)"
+ GROUP POLICY OBJECTS (GPO)
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> Get-GPO -All |
+Select-Object DisplayName,GpoStatus
+
+DisplayName                                GpoStatus
+-----------                                ---------
+Default Domain Policy             AllSettingsEnabled
+Default Domain Controllers Policy AllSettingsEnabled
+
+
+PS C:\Users\Administrator> # ==========================================
+PS C:\Users\Administrator> # NPS
+PS C:\Users\Administrator> # ==========================================
+PS C:\Users\Administrator> if (Get-WindowsFeature NPAS | Where-Object {$_.InstallState -eq "Installed"}) {
+
+    Write-Host "`n================================="
+    Write-Host " NPS CONFIGURATION"
+    Write-Host "================================="
+
+    netsh nps show config
+
+    Write-Host "`n================================="
+    Write-Host " RADIUS CLIENTS"
+    Write-Host "================================="
+
+    netsh nps show client
+
+    Write-Host "`n================================="
+    Write-Host " NETWORK POLICIES"
+    Write-Host "================================="
+
+    netsh nps show np
+
+    Write-Host "`n================================="
+    Write-Host " CONNECTION REQUEST POLICIES"
+    Write-Host "================================="
+
+    netsh nps show crp
+}
+
+=================================
+ NPS CONFIGURATION
+=================================
+
+
+=================================
+ RADIUS CLIENTS
+=================================
+
+
+=================================
+ NETWORK POLICIES
+=================================
+
+
+=================================
+ CONNECTION REQUEST POLICIES
+=================================
+
+PS C:\Users\Administrator> Write-Host "`n================================="
+
+=================================
+PS C:\Users\Administrator> Write-Host " LOCAL USERS"
+ LOCAL USERS
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> Get-LocalUser
+
+Name          Enabled Description
+----          ------- -----------
+Administrator True    Built-in account for administering the computer/domain
+Guest         False   Built-in account for guest access to the computer/domain
+krbtgt        False   Key Distribution Center Service Account
+JSmith        True
+EDavis        True
+MBrown        True
+SWilson       True
+RJones        True
+LTaylor       True
+WClark        True
+JWhite        True
+DMiller       True
+KMoore        True
+THall         True
+NYoung        True
+FGadmin       True
+CSCadmin      True
+
+
+PS C:\Users\Administrator> Write-Host "`n================================="
+
+=================================
+PS C:\Users\Administrator> Write-Host " LOCAL GROUPS"
+ LOCAL GROUPS
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> Get-LocalGroup
+
+Name                                    Description
+----                                    -----------
+Cert Publishers                         Members of this group are permitted to publish certificates to the directory
+RAS and IAS Servers                     Servers in this group can access remote access properties of users
+Allowed RODC Password Replication Group Members in this group can have their passwords replicated to all read-only d...
+Denied RODC Password Replication Group  Members in this group cannot have their passwords replicated to any read-onl...
+
+
+PS C:\Users\Administrator> Write-Host "`n================================="
+
+=================================
+PS C:\Users\Administrator> Write-Host " LOCAL GROUP MEMBERS"
+ LOCAL GROUP MEMBERS
+PS C:\Users\Administrator> Write-Host "================================="
+=================================
+PS C:\Users\Administrator> $LocalGroups = Get-LocalGroup
+PS C:\Users\Administrator> foreach ($LocalGroup in $LocalGroups) {
+
+    Write-Host "`n----- LOCAL GROUP: $($LocalGroup.Name) -----"
+
+    Get-LocalGroupMember $LocalGroup.Name
+}
+
+----- LOCAL GROUP: Cert Publishers -----
+
+----- LOCAL GROUP: RAS and IAS Servers -----
+
+
+----- LOCAL GROUP: Allowed RODC Password Replication Group -----
+
+----- LOCAL GROUP: Denied RODC Password Replication Group -----
+ObjectClass Name                               PrincipalSource
+----------- ----                               ---------------
+User        JQLAB\DC01$                        ActiveDirectory
+Group       JQLAB\Cert Publishers              ActiveDirectory
+Group       JQLAB\Domain Admins                ActiveDirectory
+Group       JQLAB\Domain Controllers           ActiveDirectory
+Group       JQLAB\Enterprise Admins            ActiveDirectory
+Group       JQLAB\Group Policy Creator Owners  ActiveDirectory
+User        JQLAB\krbtgt                       ActiveDirectory
+Group       JQLAB\Read-only Domain Controllers ActiveDirectory
+Group       JQLAB\Schema Admins                ActiveDirectory
+
+
+PS C:\Users\Administrator> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20260524013341
+**********************
