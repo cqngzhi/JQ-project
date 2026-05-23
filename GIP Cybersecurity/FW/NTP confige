@@ -1,4 +1,9 @@
 config system ntp
     set ntpsync enable
-    set server-mode enable
+    set type custom
+    config ntpserver
+        edit 1
+            set server "be.pool.ntp.org"
+        next
+    end
 end
