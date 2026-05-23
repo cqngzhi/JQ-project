@@ -24,6 +24,11 @@ set action deny
 next
 end
 
+diagnose debug flow filter addr 192.168.0.231
+diagnose debug enable
+diagnose debug flow trace start 10
+
+
 config firewall local-in-policy
 edit 1
 set status disable
