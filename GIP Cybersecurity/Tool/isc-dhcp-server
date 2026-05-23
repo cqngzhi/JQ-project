@@ -17,8 +17,8 @@ subnet 10.38.2.0 netmask 255.255.255.0 {
     option domain-name-servers 8.8.8.8, 1.1.1.1;
 }
 
-sudo ip addr add 10.38.2.1/24 dev ens0
-sudo ip link set ens0 up
+sudo ip addr add 10.38.2.1/24 dev eth0
+sudo ip link set eth0 up
 
 sudo dhcpd -t
 
